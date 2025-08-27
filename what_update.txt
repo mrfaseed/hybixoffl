@@ -1,0 +1,14 @@
+macha ithula nee enna enna update pannen nu log panniru
+
+
+How to run our project ? 
+    1. we cant just run index.html 
+    2. so we need to do ,
+    3. check python by run by type in terminal ( ctrl + ` ) -> "python --version" if installed its show version then fine 
+shows error install python
+    4.type in terminal -> python -m http.server 5500 then enter 
+    5. now go to browser and search http://localhost:5500/index.html it will work 
+
+1. creating a base logo animation for hybix ( takes 1 day to code and and hours to debug ) - verified 
+
+2.  ?
