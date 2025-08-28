@@ -5,7 +5,6 @@ const anim = lottie.loadAnimation({
   autoplay: true,
   path: 'animation_hybix_intro.json',
   rendererSettings: {
-   preserveAspectRatio: 'none'
- // this makes it stretch to fill container
+    preserveAspectRatio: 'xMidYMid slice' // keeps aspect ratio
   }
 });

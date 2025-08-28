@@ -5,29 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hybix</title>
   <style>
-    body{ 
-        margin:0;
-        display:flex; 
-        justify-content:center; 
-        align-items:center; 
-        height:100vh; 
-        background:#111; 
+    body {
+      margin: 0;
+      background: #111;
     }
-    #animBox{ 
-        width:100vw;
-        height:100vh;
-     }
+
+    #animBox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
-  <div id="animBox">
+  
+  <div id="animBox"></div>
 
-  </div>
-
-  <!-- Lottie -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-  <script src="script.js">
+  <script src="script.js"></script>
 
-  </script>
 </body>
 </html>
