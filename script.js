@@ -30,13 +30,13 @@
                     loop: false,
                     autoplay: true,
                     animationData: animationData,
-                    // NEW: Added rendererSettings to ensure the animation covers the container
+                 
                     rendererSettings: {
                         preserveAspectRatio: 'xMidYMid slice'
                     }
                 });
 
-                // NEW: Set the playback speed for the animation
+              
                 anim.setSpeed(playbackSpeed);
 
                 let completed = false;
@@ -50,18 +50,17 @@
                 anim.addEventListener('complete', onComplete);
 
                 anim.addEventListener('DOMLoaded', () => {
-                    // UPDATED: The fallback timer now accounts for the custom playback speed
+          
                     const duration = (anim.getDuration(false) * 1000) / playbackSpeed;
                     setTimeout(onComplete, duration);
                 });
             });
         }
 
-        // Play animations in sequence
         await playAnimation(animBox, introData);
         await playAnimation(animBox, sliceData);
 
-        // Show the final content
+        
         animBox.remove();
         content.style.display = 'block';
 
