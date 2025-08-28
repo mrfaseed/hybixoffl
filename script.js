@@ -1,5 +1,5 @@
 (async function run() {
-    const playbackSpeed = 1;
+    const playbackSpeed = 2;
     const animBox = document.getElementById('animBox');
     const content = document.getElementById('content');
 
