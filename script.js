@@ -1,7 +1,5 @@
 (async function run() {
-    // NEW: Control the animation speed here. 1 is normal speed, 0.5 is half speed, etc.
-    const playbackSpeed = 0.75;
-
+    const playbackSpeed = 1;
     const animBox = document.getElementById('animBox');
     const content = document.getElementById('content');
 
@@ -13,13 +11,12 @@
     try {
         const [introData, sliceData] = await Promise.all(
             animationPaths.map(path => fetch(path).then(res => {
-                if (!res.ok) {
-                    throw new Error(`Failed to fetch ${path}: ${res.statusText}`);
-                }
+                if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.statusText}`);
                 return res.json();
             }))
         );
 
+        // helper: play one animation
         function playAnimation(container, animationData) {
             return new Promise((resolve) => {
                 container.innerHTML = '';
@@ -30,43 +27,36 @@
                     loop: false,
                     autoplay: true,
                     animationData: animationData,
-                 
-                    rendererSettings: {
-                        preserveAspectRatio: 'xMidYMid slice'
-                    }
+                    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
                 });
 
-              
                 anim.setSpeed(playbackSpeed);
 
-                let completed = false;
-                const onComplete = () => {
-                    if (completed) return;
-                    completed = true;
+                anim.addEventListener('complete', () => {
                     anim.destroy();
                     resolve();
-                };
-
-                anim.addEventListener('complete', onComplete);
-
-                anim.addEventListener('DOMLoaded', () => {
-          
-                    const duration = (anim.getDuration(false) * 1000) / playbackSpeed;
-                    setTimeout(onComplete, duration);
                 });
             });
         }
 
+        // Play intro + slice
         await playAnimation(animBox, introData);
         await playAnimation(animBox, sliceData);
 
-        
-        animBox.remove();
-        content.style.display = 'block';
+        // ✅ FADE OUT LOADER, FADE IN CONTENT
+        animBox.style.transition = "opacity 0.8s ease";
+        animBox.style.opacity = "0";
+
+        setTimeout(() => {
+            animBox.remove();
+            content.classList.add("show");   // make content visible
+            document.body.style.overflow = "auto"; // allow scrolling
+        }, 800);
 
     } catch (error) {
         console.error('Animation failed:', error);
         if (animBox) animBox.remove();
-        content.style.display = 'block';
+        content.classList.add("show");
+        document.body.style.overflow = "auto";
     }
 })();

@@ -4,34 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hybix</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000000;
-    }
-
-    #animBox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-    h1{
-      color: white;
-    }
-  </style>
-</head>
-<body>
   
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900">
+
+  <!-- Loader Animation -->
   <div id="animBox"></div>
-<div id="content" style="display: none;">
- 
-  <h1>lets code here</h1>
-</div>
+
+  <!-- All page content (hidden until loader finishes) -->
+  <div id="content" class="relative h-[200vh] pt-48 text-white container mx-auto px-6">
+    
+    <!-- Navbar -->
+    <header class="relative w-full flex justify-center p-4 z-20">
+      <nav class="fixed top-6 z-50">
+        <div class="container flex items-center justify-between gap-x-6 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 shadow-lg">
+          
+          <!-- Left Side: Brand Name -->
+          <div class="text-white text-xl font-bold tracking-wider uppercase px-2">
+            <a href="#">Hybix</a>
+          </div>
+
+          <!-- Center: Navigation Links -->
+          <ul class="hidden md:flex items-center gap-x-2">
+            <li><a href="#" class="text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 px-4 py-2 rounded-full">About</a></li>
+            <li><a href="#" class="text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 px-4 py-2 rounded-full">Members</a></li>
+            <li><a href="#" class="text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 px-4 py-2 rounded-full">Collections</a></li>
+            <li><a href="#" class="text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 px-4 py-2 rounded-full">Contact</a></li>
+          </ul>
+
+          <!-- Right Side -->
+          <div class="flex items-center gap-x-2">
+            <a href="#" class="hidden md:block text-white text-sm font-medium bg-white/10 hover:bg-white/20 transition-colors duration-300 px-5 py-2 rounded-full hov">Login</a>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+              <button class="text-white p-2 rounded-full hover:bg-white/10 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Body -->
+    <h1 class="text-5xl font-bold">Lets code here</h1>
+    <p class="mt-4 text-xl text-gray-300">Scroll down to see the navbar float at the top.</p>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
